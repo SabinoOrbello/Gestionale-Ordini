@@ -1,0 +1,68 @@
+﻿@model IEnumerable<NewPizzeria.Models.Ordini>
+
+@{
+    ViewBag.Title = "OrdiniFinalizzati";
+}
+
+<h2>OrdiniFinalizzati</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Utenti.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Utenti.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShippingAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Dettagli", "Index", "DettaglioOrdini", new { id = item.OrderId }, new { @class = "btn btn-primary" })
+        </td>
+        <td>
+            @using (Html.BeginForm("Evaso", "Ordini", new { id = item.OrderId }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-primary">Evadi Ordine</button>
+            }
+        </td>
+    </tr>
+}
+
+</table>

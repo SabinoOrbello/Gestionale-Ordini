@@ -1,0 +1,93 @@
+﻿@model IEnumerable<NewPizzeria.Models.Prodotti>
+
+<div class="container">
+    <div class="row g-4">
+        @if (Request.IsAuthenticated)
+
+        {
+            <div>
+                <button type="button" class="btn btn-primary position-relative" onclick="window.location.href='@Url.Action("Cart", "Ordini")'">
+                    Carrello
+                    <span id="cart-item-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                </button>
+            </div>
+
+
+
+
+
+            foreach (var item in Model)
+            {
+                <h2 class="fTitle">Le Nostre Pizze</h2>
+                <div class="col-3">
+                    <div class="card h-100 border border-3 border-warning">
+                        <div class="card-img-top">
+                            <img src="@Url.Content(string.IsNullOrEmpty(item.Image) ? "~/Content/Images/hotel.jpg" : item.Image)" style="height:200px; width:600px" class="img-fluid" alt="...">
+                        </div>
+                        <div class="card-body bgColor">
+                            <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Name)</h5>
+                            <p class="card-text text-truncate"><span class="badge text-bg-warning text-white">Ingredienti</span> : @Html.DisplayFor(modelItem => item.Ingredients)</p>
+                            <span> @Html.ActionLink("Scopri di più", "Details", new { id = item.ProductId }, new { @class = "btn btn-warning" })</span>
+                            <div class="input-group mb-3">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart" data-id="@item.ProductId">Aggiungi al carrello</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            
+            <p>@Html.ActionLink("Effettua il Login", "Login", "Utenti", new { area = "" }, new { @class = "btn btn-primary" })</p>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            // Funzione per ottenere il numero di prodotti nel carrello
+            function updateCartItemCount() {
+                $.ajax({
+                    url: '/Ordini/GetCartItemCount',
+                    type: 'GET',
+                    success: function (response) {
+                        $('#cart-item-count').text(response);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error("Errore durante il recupero del numero di prodotti nel carrello:", errorThrown);
+                    }
+                });
+            }
+
+            // Aggiorna il numero di prodotti nel carrello quando la pagina è pronta
+            updateCartItemCount();
+
+            $('.add-to-cart').click(function () {
+                var productId = $(this).data('id');
+                var quantity = $(this).closest('.card-body').find('.quantity-input').val(); // Ottieni la quantità dal campo di input
+
+                $.ajax({
+                    url: '/Ordini/AddToCart',
+                    type: 'POST',
+                    data: { id: productId, quantity: quantity }, // Includi la quantità nei dati della richiesta
+                    success: function (response) {
+                        // Aggiorna il carrello nella UI
+                        alert("Prodotto aggiunto al carrello con successo!");
+                        // Aggiorna il numero di prodotti nel carrello
+                        updateCartItemCount();
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        // Gestisci eventuali errori qui
+                        alert("Si è verificato un errore durante l'aggiunta del prodotto al carrello.");
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
+}

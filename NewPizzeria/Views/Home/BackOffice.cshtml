@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "BackOffice";
+}
+
+<div class="container">
+    <h2 class="fTitle">BackOffice</h2>
+
+    <p> @Html.ActionLink("Lista Ordini", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+    <p> @Html.ActionLink("Dettaglio Ordine", "Index", "DettaglioOrdini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+    <p> @Html.ActionLink("Ordini da Evadere", "OrdiniFinalizzati", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+    <p> @Html.ActionLink("Ordini Evasi", "OrdiniEvasi", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+</div>
+
+
