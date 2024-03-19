@@ -288,6 +288,7 @@
     <Content Include="Views\DettaglioOrdini\Index.cshtml" />
     <Content Include="Views\Ordini\OrdiniFinalizzati.cshtml" />
     <Content Include="Views\Ordini\OrdiniEvasi.cshtml" />
+    <Content Include="Views\Prodotti\IndexAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

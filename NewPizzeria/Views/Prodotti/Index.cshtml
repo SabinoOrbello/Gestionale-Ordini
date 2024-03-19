@@ -2,9 +2,10 @@
 
 <div class="container">
     <div class="row g-4">
-        @if (Request.IsAuthenticated)
+        @if (Request.IsAuthenticated && !User.IsInRole("Admin"))
 
         {
+        <h2 class="fTitle">Le Nostre Pizze</h2>
             <div>
                 <button type="button" class="btn btn-primary position-relative" onclick="window.location.href='@Url.Action("Cart", "Ordini")'">
                     Carrello
@@ -18,7 +19,6 @@
 
             foreach (var item in Model)
             {
-                <h2 class="fTitle">Le Nostre Pizze</h2>
                 <div class="col-3">
                     <div class="card h-100 border border-3 border-warning">
                         <div class="card-img-top">
@@ -39,8 +39,65 @@
         }
         else
         {
-            
-            <p>@Html.ActionLink("Effettua il Login", "Login", "Utenti", new { area = "" }, new { @class = "btn btn-primary" })</p>
+
+            <div class="container">
+                <h2 class="fTitle">BackOffice</h2>
+                <div class="row g-4">
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem; height: 474px;">
+                            <img src="https://st2.depositphotos.com/1007566/6873/v/450/depositphotos_68734779-stock-illustration-pizza-design.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Ordini Clienti</h5>
+                                <p class="card-text">Verifica gli Ordini Effettuati</p>
+                                <p> @Html.ActionLink("Lista Ordini", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-primary mt-4" })</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://lh3.googleusercontent.com/proxy/1Ros6O9K-8qsTCmgGHYoN_1xxyciSJhKhs6z4sELVvrybtCSQCPjYqr4fXgAcegKrrwTkrY7cTKv9pY3XCd3KRvDpOt__MBq_EWnmbtIrIu9JLIOEM113uyQ5_hB1WV3HQMc903Zc57Ea9w2kY9d6pHCJgoLHNyGCgTt5QLDdL4" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Dettaglio Ordini Clienti</h5>
+                                <p class="card-text">Clicca quì se vuoi saperne di più sugli ordini effettuati(prezzo, quantità ...)</p>
+                                <p> @Html.ActionLink("Dettaglio Ordine", "Index", "DettaglioOrdini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://static.vecteezy.com/ti/vettori-gratis/p3/9900524-trancio-di-pizza-con-formaggio-fuso-e-peperoni-adesivo-cartoon-in-stile-fumetto-con-decorazione-di-contorno-per-biglietti-di-auguri-poster-toppe-stampe-per-vestiti-emblemi-illustrazione-disegno-vettoriale.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Ordini da Evadere</h5>
+                                <p class="card-text">Dai un occhoata agli ordini che non sono stati ancora evasi.</p>
+                                <p> @Html.ActionLink("Ordini da Evadere", "OrdiniFinalizzati", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://pizzeriaromaprati.it/wp-content/uploads/Pizza-a-domicilio-roma-prati-gracchi-pizzeria-veloce.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Ceckh-out</h5>
+                                <p class="card-text">Controlla gli ordini che sono stati completati per effettuare il ceckh-out</p>
+                                <p> @Html.ActionLink("Ordini Evasi", "OrdiniEvasi", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://pizzeriaromaprati.it/wp-content/uploads/Pizza-a-domicilio-roma-prati-gracchi-pizzeria-veloce.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Ceckh-out</h5>
+                                <p class="card-text">Controlla gli ordini che sono stati completati per effettuare il ceckh-out</p>
+                                <p> @Html.ActionLink("Lista Prodotti", "IndexAdmin", "Prodotti", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
     </div>
 </div>

@@ -3,13 +3,51 @@
     ViewBag.Title = "BackOffice";
 }
 
+
 <div class="container">
     <h2 class="fTitle">BackOffice</h2>
+    <div class="row g-4">
+        <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p> @Html.ActionLink("Lista Ordini", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p> @Html.ActionLink("Dettaglio Ordine", "Index", "DettaglioOrdini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                </div>
+            </div>
+        </div>
 
-    <p> @Html.ActionLink("Lista Ordini", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
-    <p> @Html.ActionLink("Dettaglio Ordine", "Index", "DettaglioOrdini", new { area = "" }, new { @class = "btn btn-primary" })</p>
-    <p> @Html.ActionLink("Ordini da Evadere", "OrdiniFinalizzati", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
-    <p> @Html.ActionLink("Ordini Evasi", "OrdiniEvasi", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+        <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p> @Html.ActionLink("Ordini da Evadere", "OrdiniFinalizzati", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p> @Html.ActionLink("Ordini Evasi", "OrdiniEvasi", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-

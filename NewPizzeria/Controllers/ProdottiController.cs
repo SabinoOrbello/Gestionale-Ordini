@@ -23,6 +23,11 @@ namespace NewPizzeria.Controllers
             return View(db.Prodotti.ToList());
         }
 
+        public ActionResult IndexAdmin()
+        {
+            return View(db.Prodotti.ToList());
+        }
+
         // GET: Prodottis/Details/5
         public ActionResult Details(int? id)
         {
