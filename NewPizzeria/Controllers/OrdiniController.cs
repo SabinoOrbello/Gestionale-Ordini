@@ -10,8 +10,10 @@ using NewPizzeria.Models;
 
 namespace NewPizzeria.Controllers
 {
+    [Authorize]
     public class OrdiniController : Controller
     {
+
         private ModelDbContext db = new ModelDbContext();
 
         // GET: Ordini
@@ -250,9 +252,26 @@ namespace NewPizzeria.Controllers
                 return View(new List<DettaglioOrdini>());
             }
 
-            // Restituisci la vista con i dettagli dell'ordine corrente
+            // Calcola la media del tempo di consegna dei prodotti nel carrello
+            int totalDeliveryTime = 0;
+            int totalProducts = 0;
+
+            foreach (var item in order.DettaglioOrdini)
+            {
+                if (item.Prodotti.DeliveyTime.HasValue)
+                {
+                    totalDeliveryTime += item.Prodotti.DeliveyTime.Value;
+                    totalProducts++;
+                }
+            }
+
+            int averageDeliveryTime = totalProducts > 0 ? totalDeliveryTime / totalProducts : 0;
+
+            // Restituisci la vista con i dettagli dell'ordine corrente e la media del tempo di consegna
+            ViewBag.AverageDeliveryTime = averageDeliveryTime;
             return View(order.DettaglioOrdini.ToList());
         }
+
 
         [HttpPost]
         public ActionResult ConfirmOrder(string shippingAddress, string notes)

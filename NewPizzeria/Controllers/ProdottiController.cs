@@ -11,7 +11,7 @@ using NewPizzeria.Models;
 
 namespace NewPizzeria.Controllers
 {
-
+    [Authorize]
     public class ProdottiController : Controller
     {
 
@@ -23,6 +23,7 @@ namespace NewPizzeria.Controllers
             return View(db.Prodotti.ToList());
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult IndexAdmin()
         {
             return View(db.Prodotti.ToList());

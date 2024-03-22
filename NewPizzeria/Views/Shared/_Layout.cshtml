@@ -5,46 +5,113 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" type="text/css" href="/Styles/css.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@400;500&family=Sedgwick+Ave+Display&family=Spectral:wght@400;500&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body class="bg-dark">
 
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navColor sticky-top">
         <div class="container">
-            @Html.ActionLink("Pizzoria Ristorante", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <img src="~/Content/Images/71442284-pizza-logo-vettoriale.jpg" alt="Pizza Margherita" style="width:86px" ; height="58px" ;>
+            @Html.ActionLink("Pizzoria Ristorante", "Index", "Home", new { area = "" }, new { @class = "navbar-brand titleFont fs-3 text-warning" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                    <li>@Html.ActionLink(" Menù", "Index", "Prodotti", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                </ul>
+                <ul class="navbar-nav">
                     @if (Request.IsAuthenticated)
                     {
-                        
-                            <li>@Html.ActionLink("Logout", "Logout", "Utenti", new { area = "" }, new { @class = "nav-link  text-warning" })</li>
-                            if (User.IsInRole("Admin"))
-                            {
-                                <li>@Html.ActionLink("Back Office", "BackOffice", "Home", new { area = "" }, new { @class = "nav-link  text-warning" })</li>
-                            }
-                        
+                        <li>@Html.ActionLink("Logout", "Logout", "Utenti", new { area = "" }, new { @class = "btn btn-dark fw-bold" })</li>
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Back Office", "BackOffice", "Home", new { area = "" }, new { @class = "nav-link text-warning fw-bold" })</li>
+                        }
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Login", "Login", "Utenti", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Accedi", "Login", "Utenti", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Registrati", "Register", "Utenti", new { area = "" }, new { @class = "nav-link" })
+                        </li>
                     }
-
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container body-content">
+
+    <div class=" bgContainer p-4">
         @RenderBody()
-        
-       
     </div>
+
+    <div class="container-fluid navColor p-2 d-flex justify-content-around mb-0">
+        <span class="fs-5 d-flex flex-column"><ion-icon size="large" name="pizza-outline"></ion-icon>pizza</span> |
+        <span class="fs-5 d-flex flex-column"><ion-icon size="large" name="beer-outline"></ion-icon>birre</span> |
+        <span class="fs-5 d-flex flex-column align-items-center"><ion-icon size="large" name="fast-food-outline"></ion-icon>panini e bibite</span> |
+        <span class="fs-5 d-flex flex-column align-items-center"><ion-icon size="large" name="storefront-outline"></ion-icon>posti a sedere</span>
+    </div>
+
+    <footer class="footer ">
+        <div class="container-fluid  textColor bg-dark p-4 mb-0 ">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Contatti</h2>
+                    <ul>
+                        <li>Email: info@example.com</li>
+                        <li>Telefono: +1234567890</li>
+                        <li>Indirizzo: Via Roma, 123 - Città</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h2>Link Utili</h2>
+                    <ul>
+                        <li><a class="text-decoration-none textColor" href="#">Termini e Condizioni</a></li>
+                        <li><a class="text-decoration-none textColor" href="#">Privacy Policy</a></li>
+                        <li><a class="text-decoration-none textColor" href="#">Resi e Rimborsi</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h2>Seguici</h2>
+                    <ul class="list-unstyled">
+                        <li class="d-flex align-items-center mb-2">
+                            <a href="#" class="me-2"><ion-icon size="large" name="logo-facebook"></ion-icon></a>
+                            <span>Visita la nostra pagina Facebook</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-2">
+                            <a href="#" class="me-2"><ion-icon size="large" name="logo-twitter"></ion-icon></a>
+                            <span>Vieni a trovarci su Twitter</span>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <a href="#" class="me-2"><ion-icon size="large" name="logo-instagram"></ion-icon></a>
+                            <span>Guarda i nostri Contenuti su Instagram</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2024 Nome del tuo sito. Tutti i diritti riservati.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -126,6 +126,37 @@ namespace NewPizzeria.Controllers
         }
 
         [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register([Bind(Include = "Username,Password,Email")] Utenti model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Verifica se l'utente esiste già
+                var existingUser = db.Utenti.FirstOrDefault(u => u.Username == model.Username);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("Username", "Username already in use");
+                    return View(model);
+                }
+
+                // Crea un nuovo utente
+                db.Utenti.Add(model);
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Prodotti");
+            }
+
+            //  significa che qualcosa non ha funzionato, quindi visualizza nuovamente il modulo
+            return View(model);
+        }
+
+        [HttpGet]
         public ActionResult Login()
         {
 
@@ -158,7 +189,7 @@ namespace NewPizzeria.Controllers
 
                     Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
 
-                    return RedirectToAction("Index", "Prodotti");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

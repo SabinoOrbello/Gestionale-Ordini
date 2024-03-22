@@ -202,9 +202,19 @@
     <Content Include="Content\Images\111652560-4ea7ddfa-bd40-44bb-8236-e27fe17f5841 %281%29.jpg" />
     <Content Include="Content\Images\111652560-4ea7ddfa-bd40-44bb-8236-e27fe17f5841.jpg" />
     <Content Include="Content\Images\42c62bb7563050a675cf97d07a1b55115eaecfac.jpg" />
+    <Content Include="Content\Images\71442284-pizza-logo-vettoriale.jpg" />
     <Content Include="Content\Images\BFV36537_CC2017_2IngredintDough4Ways-FB.jpg" />
     <Content Include="Content\Images\calzone-napoletano.jpg" />
+    <Content Include="Content\Images\card-2.jpg" />
+    <Content Include="Content\Images\card-3.jpg" />
+    <Content Include="Content\Images\card-4.jpg" />
+    <Content Include="Content\Images\card-5.jpg" />
+    <Content Include="Content\Images\card-6.png" />
+    <Content Include="Content\Images\card-7.jpg" />
+    <Content Include="Content\Images\card1.jpg" />
     <Content Include="Content\Images\codesn.png" />
+    <Content Include="Content\Images\logoPizza.svg" />
+    <Content Include="Content\Images\logoPizza2.png" />
     <Content Include="Content\Images\photo_2023-11-16_09-21-12.jpg" />
     <Content Include="Content\Images\photo_2023-11-17_10-37-59.jpg" />
     <Content Include="Content\Images\photo_2023-11-17_10-50-30.jpg" />
@@ -214,6 +224,7 @@
     <Content Include="Content\Images\pizza-capricciosa.jpg" />
     <Content Include="Content\Images\Pizza-Margherita.jpg" />
     <Content Include="Content\Images\Sartascinello_Cerignola-1024x966.jpg" />
+    <Content Include="Content\Images\tema-pizza.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -289,6 +300,8 @@
     <Content Include="Views\Ordini\OrdiniFinalizzati.cshtml" />
     <Content Include="Views\Ordini\OrdiniEvasi.cshtml" />
     <Content Include="Views\Prodotti\IndexAdmin.cshtml" />
+    <Content Include="Views\Home\CalcolaIncasso.cshtml" />
+    <Content Include="Views\Utenti\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

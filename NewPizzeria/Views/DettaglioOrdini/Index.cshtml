@@ -4,50 +4,51 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="container prodottiColor text-white fw-bold p-2 w-50">
+    <h2 class="text-warning">Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderDetailId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ordini.ShippingAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prodotti.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        
-    </tr>
+    
+    <table class="table">
+        <tr class="text-warning">
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDetailId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ordini.ShippingAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prodotti.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderDetailId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ordini.ShippingAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prodotti.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        
-    </tr>
-}
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr class="text-white">
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDetailId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ordini.ShippingAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prodotti.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    </div>

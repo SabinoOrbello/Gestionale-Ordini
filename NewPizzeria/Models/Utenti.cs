@@ -20,12 +20,15 @@ namespace NewPizzeria.Models
         public int UserId { get; set; }
 
         [StringLength(30)]
+        [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; }
 
         [StringLength(50)]
+        [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
 
         [StringLength(100)]
+        [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }
 
         [StringLength(20)]

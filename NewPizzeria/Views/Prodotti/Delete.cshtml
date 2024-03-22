@@ -4,61 +4,64 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="container prodottiColor text-white fw-bold p-2 w-50">
+    <h2 class="text-warning">Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Prodotti</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Prodotti</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="text-warning">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+            <dt class="text-warning">
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
 
-        <dd>
-            <img src="@Url.Content(Model.Image)" style="height:200px" class="img-fluid border border-warning border-2" alt="...">
-        </dd>
+            <dd>
+                <img src="@Url.Content(Model.Image)" style="height:200px" class="img-fluid border border-warning border-2" alt="...">
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt class="text-warning">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveyTime)
-        </dt>
+            <dt class="text-warning">
+                @Html.DisplayNameFor(model => model.DeliveyTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DeliveyTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DeliveyTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ingredients)
-        </dt>
+            <dt class="text-warning">
+                @Html.DisplayNameFor(model => model.Ingredients)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ingredients)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Ingredients)
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger my-2" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+    </div>

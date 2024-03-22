@@ -1,18 +1,19 @@
-﻿.fTitle {
-    font-family: 'Lobster', cursive;
-    font-size: 40px;
-    color: #c78a39;
+﻿body {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-.fForm {
-    font-family: 'Garamond', cursive;
-    font-size: 30px;
-    color: #ae5454f0;
-    font-weight: 600;
+.fTitle {
+    color: #e55911;
+}
+
+.fPara {
+    color: #f16262cf;
 }
 
 .botton {
-    background-color: #c78a39;
+    background-color: #d79434;
     color: white;
     padding: 8px 18px;
     text-align: center;
@@ -22,4 +23,112 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
+}
+
+.bodyImage {
+    background-color: #171717e3;
+}
+
+}
+
+.bgForm {
+    background-color: #0000006e;
+}
+
+.bgCard {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bgContainer {
+    background-image: url('../Content/Images/pizza-20.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.navColor {
+    background-color: #cf1717;
+}
+
+.textColor {
+    color: gray
+}
+
+.alt {
+    height: 34rem;
+}
+
+.homeColor {
+    background-color: #0000007d;
+}
+
+.cardStyle {
+    background-color: transparent;
+}
+
+.prodottiColor {
+    background-color: #00000099;
+}
+
+.titleFont {
+    font-family: "Sedgwick Ave Display", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: #c67d27;
+}
+
+.cart {
+    transition: box-shadow .3s, transform 0.5s;
+}
+
+    .cart:hover {
+        box-shadow: 2px 4px 3px 3px rgba(0, 0, 0, 0.4);
+        transform: translateY(-5px);
+    }
+
+.butt {
+    padding: 10px 20px; /* Imposta il padding di base */
+    transition: width 0.6s ease; /* Aggiunge una transizione fluida alla larghezza */
+}
+
+    .butt:hover {
+        width: calc(50% + 3px); /* Aumenta la larghezza del 10% quando si passa sopra con il mouse */
+    }
+
+.cardTop {
+    height: 200px; /* Imposta l'altezza desiderata */
+    object-fit: cover; /* Copre completamente l'area dell'immagine */
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Per il video */
+iframe {
+    animation: slideInFromRight 2s ease-out;
+}
+
+/* Per le immagini */
+.img-fluid {
+    animation: slideInFromRight 2s ease-out;
+}
+
+/* Nascondi il video all'inizio */
+iframe {
+    display: none;
+}
+
+/* Nascondi le immagini all'inizio */
+.img-fluid {
+    opacity: 0;
 }

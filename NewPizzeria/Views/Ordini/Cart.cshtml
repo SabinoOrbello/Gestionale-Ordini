@@ -3,50 +3,52 @@
 @{
     ViewBag.Title = "Carrello";
 }
+<div class="container prodottiColor text-white fw-bold p-2 w-50">
+    <h2>Carrello</h2>
 
-<h2>Carrello</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Prodotto</th>
-            <th>Prezzo</th>
-            <th>Quantità</th>
-            <th>Totale</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table text-white fw-bold">
+        <thead>
             <tr>
-                <td>@item.Prodotti.Name</td>
-                <td>@item.Prodotti.Price</td>
-                <td>@item.Quantity</td>
-                <td>@(item.Quantity * item.Prodotti.Price)</td>
-                <td>
-                    <button class="btn btn-danger remove-from-cart" data-id="@item.ProductId">Rimuovi</button>
-                </td>
+                <th>Prodotto</th>
+                <th>Prezzo</th>
+                <th>Quantità</th>
+                <th>Totale</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Prodotti.Name</td>
+                    <td>@item.Prodotti.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Quantity * item.Prodotti.Price)</td>
+                    <td>
+                        <button class="btn btn-danger remove-from-cart" data-id="@item.ProductId">Rimuovi</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<h3 class="tableStyle">Totale: @Model.Sum(item => item.Quantity * item.Prodotti.Price)</h3>
+    <h3 class="tableStyle">Totale: @Model.Sum(item => item.Quantity * item.Prodotti.Price)</h3>
+    <h3 class="tableStyle">Media Tempo di Consegna: @ViewBag.AverageDeliveryTime min</h3>
 
-@using (Html.BeginForm("ConfirmOrder", "Ordini", FormMethod.Post))
-{
-    <div class="form-group">
-        <label for="shippingAddress">Indirizzo di spedizione:</label>
-        <input type="text" id="shippingAddress" name="shippingAddress" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label for="notes">Note:</label>
-        <textarea id="notes" name="notes" class="form-control"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Conferma Ordine</button>
-}
+    @using (Html.BeginForm("ConfirmOrder", "Ordini", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="shippingAddress">Indirizzo di spedizione:</label>
+            <input type="text" id="shippingAddress" name="shippingAddress" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="notes">Note:</label>
+            <textarea id="notes" name="notes" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success my-2">Conferma Ordine</button>
+    }
 
-<p><a href="@Url.Action("Index", "Prodotti")" class="btn btn-primary">Continua lo shopping</a></p>
+    <p><a href="@Url.Action("Index", "Prodotti")" class="btn btn-warning">Continua lo shopping</a></p>
+</div>
 
 @section scripts {
     <script>

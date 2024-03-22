@@ -3,25 +3,28 @@
 @{
     ViewBag.Title = "IndexAdmin";
 }
+<div class="container">
+    <div class="row g-4">
+        <h2 class="text-white">Lista Prodotti</h2>
 
-<h2>IndexAdmin</h2>
+        @foreach (var item in Model)
+        {
+            <div class="col-3">
+                <div class="card h-100 border border-3 border-warning bg-transparent cart">
+                    <div class="card-img-top">
+                        <img src="@Url.Content(string.IsNullOrEmpty(item.Image) ? "~/Content/Images/hotel.jpg" : item.Image)" style="height:200px; width:600px" class="img-fluid" alt="...">
+                    </div>
+                    <div class="card-body bgColor">
+                        <h5 class="card-title text-white"> @Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text text-truncate text-white"><span class="badge text-bg-warning fw-bold  text-truncate">Ingredienti</span> : @Html.DisplayFor(modelItem => item.Ingredients)</p>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ProductId }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger" })
 
-@foreach (var item in Model)
-{
-    <div class="col-3">
-        <div class="card h-100 border border-3 border-warning">
-            <div class="card-img-top">
-                <img src="@Url.Content(string.IsNullOrEmpty(item.Image) ? "~/Content/Images/hotel.jpg" : item.Image)" style="height:200px; width:600px" class="img-fluid" alt="...">
+                    </div>
+                </div>
             </div>
-            <div class="card-body bgColor">
-                <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Name)</h5>
-                <p class="card-text"><span class="badge text-bg-warning text-white">Ingredienti</span> : @Html.DisplayFor(modelItem => item.Ingredients)</p>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-
-            </div>
-        </div>
+        }
     </div>
-}
+</div>
 

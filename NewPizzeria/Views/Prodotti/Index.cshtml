@@ -1,17 +1,20 @@
 ﻿@model IEnumerable<NewPizzeria.Models.Prodotti>
 
-<div class="container">
-    <div class="row g-4">
+<div class="container bgContainer mt-3">
+    <div class="row g-4 prodottiColor">
         @if (Request.IsAuthenticated && !User.IsInRole("Admin"))
 
         {
-        <h2 class="fTitle">Le Nostre Pizze</h2>
-            <div>
-                <button type="button" class="btn btn-primary position-relative" onclick="window.location.href='@Url.Action("Cart", "Ordini")'">
-                    Carrello
-                    <span id="cart-item-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
-                </button>
-            </div>
+        <h2 class="fTitle mt-4">Le Nostre Pizze</h2>
+        <div>
+            <button type="button" class="btn btn-warning position-relative fw-bold" onclick="window.location.href='@Url.Action("Cart", "Ordini")'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3 " viewBox="0 0 16 16" >
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+            </svg>
+                Carrello
+                <span id="cart-item-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </button>
+        </div>
 
 
 
@@ -20,17 +23,18 @@
             foreach (var item in Model)
             {
                 <div class="col-3">
-                    <div class="card h-100 border border-3 border-warning">
+                    <div class="card h-100 border border-3 border-danger bg-transparent cart">
                         <div class="card-img-top">
                             <img src="@Url.Content(string.IsNullOrEmpty(item.Image) ? "~/Content/Images/hotel.jpg" : item.Image)" style="height:200px; width:600px" class="img-fluid" alt="...">
                         </div>
-                        <div class="card-body bgColor">
-                            <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Name)</h5>
-                            <p class="card-text text-truncate"><span class="badge text-bg-warning text-white">Ingredienti</span> : @Html.DisplayFor(modelItem => item.Ingredients)</p>
-                            <span> @Html.ActionLink("Scopri di più", "Details", new { id = item.ProductId }, new { @class = "btn btn-warning" })</span>
+                        <div class="card-body bg-transparent">
+                            <h5 class="card-title text-white fs-3"> @Html.DisplayFor(modelItem => item.Name)</h5>
+                            <p class="card-text text-truncate text-white"><span class="badge text-bg-warning fw-bold  text-truncate">Ingredienti</span> : @Html.DisplayFor(modelItem => item.Ingredients)</p>
+                            <span> @Html.ActionLink("Scopri di più", "Details", new { id = item.ProductId }, new { @class = "btn btn-warning fw-bold mb-2 butt" })</span> <br />
+                            <p class="badge text-bg-warning ">Tempo di consegna: @Html.DisplayFor(modelItem => item.DeliveyTime)</p>
                             <div class="input-group mb-3">
                                 <input type="number" class="form-control quantity-input" value="1" min="1">
-                                <button class="btn btn-primary add-to-cart" data-id="@item.ProductId">Aggiungi al carrello</button>
+                                <button class="btn btn-success butt fw-bold add-to-cart" data-id="@item.ProductId">Aggiungi al carrello</button>
                             </div>
                         </div>
                     </div>
@@ -40,64 +44,64 @@
         else
         {
 
-            <div class="container">
-                <h2 class="fTitle">BackOffice</h2>
-                <div class="row g-4">
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem; height: 474px;">
-                            <img src="https://st2.depositphotos.com/1007566/6873/v/450/depositphotos_68734779-stock-illustration-pizza-design.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Ordini Clienti</h5>
-                                <p class="card-text">Verifica gli Ordini Effettuati</p>
-                                <p> @Html.ActionLink("Lista Ordini", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-primary mt-4" })</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://lh3.googleusercontent.com/proxy/1Ros6O9K-8qsTCmgGHYoN_1xxyciSJhKhs6z4sELVvrybtCSQCPjYqr4fXgAcegKrrwTkrY7cTKv9pY3XCd3KRvDpOt__MBq_EWnmbtIrIu9JLIOEM113uyQ5_hB1WV3HQMc903Zc57Ea9w2kY9d6pHCJgoLHNyGCgTt5QLDdL4" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dettaglio Ordini Clienti</h5>
-                                <p class="card-text">Clicca quì se vuoi saperne di più sugli ordini effettuati(prezzo, quantità ...)</p>
-                                <p> @Html.ActionLink("Dettaglio Ordine", "Index", "DettaglioOrdini", new { area = "" }, new { @class = "btn btn-primary" })</p>
-                            </div>
-                        </div>
-                    </div>
+    <div class="container">
+        <h2 class="fTitle">BackOffice</h2>
+        <div class="row g-4">
+            <div class="col-3">
+                <div class="card h-100" style="width: 18rem;">
+                    <img src="~/Content/Images/card-5.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Visualizza gli Ordini</h5>
 
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://static.vecteezy.com/ti/vettori-gratis/p3/9900524-trancio-di-pizza-con-formaggio-fuso-e-peperoni-adesivo-cartoon-in-stile-fumetto-con-decorazione-di-contorno-per-biglietti-di-auguri-poster-toppe-stampe-per-vestiti-emblemi-illustrazione-disegno-vettoriale.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Ordini da Evadere</h5>
-                                <p class="card-text">Dai un occhoata agli ordini che non sono stati ancora evasi.</p>
-                                <p> @Html.ActionLink("Ordini da Evadere", "OrdiniFinalizzati", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://pizzeriaromaprati.it/wp-content/uploads/Pizza-a-domicilio-roma-prati-gracchi-pizzeria-veloce.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Ceckh-out</h5>
-                                <p class="card-text">Controlla gli ordini che sono stati completati per effettuare il ceckh-out</p>
-                                <p> @Html.ActionLink("Ordini Evasi", "OrdiniEvasi", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://pizzeriaromaprati.it/wp-content/uploads/Pizza-a-domicilio-roma-prati-gracchi-pizzeria-veloce.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Ceckh-out</h5>
-                                <p class="card-text">Controlla gli ordini che sono stati completati per effettuare il ceckh-out</p>
-                                <p> @Html.ActionLink("Lista Prodotti", "IndexAdmin", "Prodotti", new { area = "" }, new { @class = "btn btn-primary" })</p>
-                            </div>
-                        </div>
+                        <p> @Html.ActionLink("Lista Ordini", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
                     </div>
                 </div>
             </div>
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/Content/Images/card-2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ordine Dettagli</h5>
+
+                        <p> @Html.ActionLink("Dettaglio Ordine", "Index", "DettaglioOrdini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/Content/Images/card-3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ordini da Evadere</h5>
+
+                        <p> @Html.ActionLink("Ordini da Evadere", "OrdiniFinalizzati", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/Content/Images/card-4.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ordini Evasi</h5>
+
+                        <p> @Html.ActionLink("Ordini Evasi", "OrdiniEvasi", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/Content/Images/card-7.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ordini Evasi</h5>
+
+                        <p> @Html.ActionLink("Lista Prodotti", "IndexAdmin", "Prodotti", new { area = "" }, new { @class = "btn btn-primary" })</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         }
     </div>
 </div>

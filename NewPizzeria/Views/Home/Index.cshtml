@@ -1,12 +1,81 @@
-﻿<div class="container ms-3 mt-3">
-    <h2 class="text-warning fTitle fs-1 fw-bold">Benvenuto Da Mordi & Fuggi</h2>
-    <main class="d-flex fForm flex-column fs-3 text-light">
-
-        <p class="fForm">Effettua il Login per ordinare i nostri Prodotti</p>
-        <span> @Html.ActionLink("Login", "Login", "Utenti", new { area = "" }, new { @class = "botton" })</span>
-        <span class="fForm"> Non sei ancora registrato?</span>
-        <span> @Html.ActionLink("Registrati", "Register", "Utenti", new { area = "" }, new { @class = "botton" })</span>
+﻿<div class=" bgForm">
 
 
+    <main class="d-flex  flex-column fs-3">
+
+
+
+        @if (Request.IsAuthenticated)
+        {
+
+
+            <div class="p-3 homeColor mb-3 text-center ">
+                <h2 class=" fs-1 fw-bold fTitle">Benvenuto Da Mordi & Fuggi</h2>
+
+
+
+                <iframe width="800" height="450" src="https://www.youtube.com/embed/9Iq1C2L5Wi8?autoplay=1" title="Ottima pubblicità per promuovere la consegna a domicilio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="container text-white my-3">
+                <h3>I nostri Prodotti</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="~/Content/Images/calzone-napoletano.jpg" alt="Pizza Margherita" class="img-fluid rounded-5">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="~/Content/Images/pizza-capricciosa.jpg" alt="Pizza Pepperoni" class="img-fluid rounded-5">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="~/Content/Images/pizza-21.jpg" alt="Pizza Vegetariana" class="img-fluid rounded-5">
+                    </div>
+                </div>
+            </div>
+
+
+        }
+        else
+        {
+            <div class="container-fluid text-center w-75 p-3">
+                <div class="p-3 homeColor mb-3 text-center ">
+                    <h2 class=" fs-1 fw-bold fTitle">Benvenuto Da Mordi & Fuggi</h2>
+                    <div class="d-flex flex-column">
+                    </div>
+                </div>
+                <iframe width="800" height="450" src="https://www.youtube.com/embed/9Iq1C2L5Wi8?autoplay=1" title="Ottima pubblicità per promuovere la consegna a domicilio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="container text-white my-3">
+                <h3>I nostri Prodotti</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="~/Content/Images/calzone-napoletano.jpg" alt="Pizza Margherita" class="img-fluid rounded-5">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="~/Content/Images/pizza-capricciosa.jpg" alt="Pizza Pepperoni" class="img-fluid rounded-5">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="~/Content/Images/pizza-21.jpg" alt="Pizza Vegetariana" class="img-fluid rounded-5">
+                    </div>
+                </div>
+            </div>
+
+        }
     </main>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Mostra il video
+        document.querySelector("iframe").style.display = "block";
+
+        // Mostra le immagini con un'animazione
+        document.querySelectorAll(".img-fluid").forEach(function (img) {
+            img.style.opacity = "0"; // Imposta l'opacità a 0 per iniziare
+            img.style.transition = "opacity 1s ease-in-out"; // Aggiungi una transizione per un effetto graduale
+            setTimeout(function () {
+                img.style.opacity = "1"; // Imposta l'opacità a 1 dopo un ritardo di 1 secondo
+            }, 1000);
+        });
+    });
+
+</script>
+

@@ -3,5 +3,9 @@
     ViewBag.Title = "OrderConfirmed";
 }
 
-<h2>Il tuo Ordine è stato Confermato con Successo</h2>
+<div class="container prodottiColor text-white fw-bold p-2 w-50">
+    <h2>Il tuo Ordine è stato Confermato con Successo</h2>
+
+    <p>@Html.ActionLink("Torna alla pagina principale", "Index", "Prodotti", new { area = "" }, new { @class = "btn btn-warning fw-bold" })</p>
+    </div>
 

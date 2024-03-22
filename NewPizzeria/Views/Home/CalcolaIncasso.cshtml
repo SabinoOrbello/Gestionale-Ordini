@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Incasso Totale</title>
+</head>
+<body>
+    <h2>Incasso Totale per il giorno @ViewBag.Data</h2>
+    @if (ViewBag.IncassoTotale != null)
+    {
+        <p>L'incasso totale per il @ViewBag.Data è: @ViewBag.IncassoTotale</p>
+    }
+</body>
+</html>
+<script>
+        $(document).ready(function () {
+            $('#calcolaIncasso').click(function () {
+                var data = $('#inputData').val();
+                $.ajax({
+                    url: '@Url.Action("CalcolaIncasso", "Ordini")',
+                    type: 'GET',
+                    data: { data: data },
+                    success: function (response) {
+                        $('#risultato').html('L\'incasso totale per la data ' + data + ' è: ' + response);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error("Si è verificato un errore:", errorThrown);
+                    }
+                });
+            });
+        });
+</script>
+}
