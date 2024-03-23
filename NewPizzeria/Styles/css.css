@@ -119,7 +119,7 @@ iframe {
 }
 
 /* Per le immagini */
-.img-fluid {
+.imgAnimation {
     animation: slideInFromRight 2s ease-out;
 }
 
@@ -129,6 +129,6 @@ iframe {
 }
 
 /* Nascondi le immagini all'inizio */
-.img-fluid {
+.imgAnimation {
     opacity: 0;
 }

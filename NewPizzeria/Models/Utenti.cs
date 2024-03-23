@@ -25,6 +25,7 @@ namespace NewPizzeria.Models
 
         [StringLength(50)]
         [Required(ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [StringLength(100)]
